@@ -7,14 +7,21 @@ import { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
 import ChapterItem from "./ChapterItem";
 import { ChapterData } from "../Utils/ChapterData";
-
-console.log(ChapterData);
+import useChaptersStore from "../stores/useChaptersStore";
 
 export default function Experience(props) {
     // state for handle chapter mesh
     const [hasChaterItem, setHasChapterItem] = useState(true);
 
-    console.log(ChapterData);
+    // set max chapter on useChaptersStore
+    const setMaxChapter = useChaptersStore((state) => state.setMaxChapter);
+    const maxChapter = useChaptersStore((state) => state.maxChapter);
+
+    useEffect(() => {
+        setMaxChapter(ChapterData.length);
+        // console.log(maxChapter);
+    }, [maxChapter]);
+
     return (
         <>
             <Light />
