@@ -5,10 +5,20 @@ const useChaptersStore = create((set) => ({
   currentChapter: 0,
   maxChapter: 0,
   addChapter: (chapterObject) => {
-    set((state) => ({
-      chapters: [...state.chapters, chapterObject],
-      currentChapter: state.currentChapter + 1,
-    }));
+    set((state) => {
+      const chapterExists = state.chapters.find(
+        (chapter) => chapter.no === chapterObject.no
+      );
+
+      if (chapterExists) {
+        return state;
+      } else {
+        return {
+          chapters: [...state.chapters, chapterObject],
+          currentChapter: state.chapters.length + 1,
+        };
+      }
+    });
   },
   setMaxChapter: (noOfChapter) => set({ maxChapter: noOfChapter }),
 }));

@@ -1,26 +1,31 @@
-import { Stage, OrbitControls, ContactShadows } from "@react-three/drei";
 import Light from "./Light";
 import Player from "./Player";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import { useFrame } from "@react-three/fiber";
-import { useState, useEffect, useRef } from "react";
-import * as THREE from "three";
+import { useState, useEffect, useMemo } from "react";
 import ChapterItem from "./ChapterItem";
 import { ChapterData } from "../Utils/ChapterData";
 import useChaptersStore from "../stores/useChaptersStore";
 
-export default function Experience(props) {
+export default function Experience() {
     // state for handle chapter mesh
-    const [hasChaterItem, setHasChapterItem] = useState(true);
 
     // set max chapter on useChaptersStore
     const setMaxChapter = useChaptersStore((state) => state.setMaxChapter);
-    const maxChapter = useChaptersStore((state) => state.maxChapter);
+    const chapters = useChaptersStore((state) => state.chapters);
+
+    const [chapterData, setChapterData] = useState(ChapterData);
 
     useEffect(() => {
         setMaxChapter(ChapterData.length);
-        // console.log(maxChapter);
-    }, [maxChapter]);
+    }, []);
+
+    const chapterItems = useMemo(
+        () =>
+            chapterData.map((chapter) => (
+                <ChapterItem key={chapter.id} chapter={chapter} />
+            )),
+        [chapterData]
+    );
 
     return (
         <>
@@ -40,23 +45,9 @@ export default function Experience(props) {
                 </mesh>
             </RigidBody>
 
-            {ChapterData.map((Chapter, index) => {
-                return (
-                    <ChapterItem
-                        key={index}
-                        hasChpaterItem={hasChaterItem}
-                        chapter={Chapter}
-                    />
-                );
-            })}
+            {chapterItems}
 
-            <RigidBody type="fixed">
-                <CuboidCollider args={[25, 2, 0.5]} position={[0, 1, 25]} />
-                <CuboidCollider args={[25, 2, 0.5]} position={[0, 1, -25]} />
-                <CuboidCollider args={[0.5, 2, 5]} position={[5.5, 1, 0]} />
-                <CuboidCollider args={[0.5, 2, 5]} position={[-5.5, 1, 0]} />
-            </RigidBody>
-            {/* <gridHelper args={[25, 25]} /> */}
+            <gridHelper args={[50, 50]} position-y={-0.99} />
         </>
     );
 }

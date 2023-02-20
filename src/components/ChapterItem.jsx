@@ -1,37 +1,40 @@
 import { RigidBody } from "@react-three/rapier";
-import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useRef, useState, memo } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import useChaptersStore from "../stores/useChaptersStore";
 import * as THREE from "three";
 
-export default function ChapterItem({ hasChpaterItem, chapter }) {
+function ChapterItem({ chapter }) {
+  const { scene } = useThree();
   const rigidRef = useRef();
 
   // store for control popup open and show chapter that player get
-  const setPopupOpen = usePopupStore((state) => state.setPopup);
-  const isPopupOpen = usePopupStore((state) => state.popup);
+  const setGetChapterPopupOpen = usePopupStore(
+    (state) => state.setPopupGetChapter
+  );
+  const isGetChapterPopupOpen = usePopupStore((state) => state.popupGetChapter);
   const setCurrentChapter = usePopupStore((state) => state.setChapter);
 
   // store for keep chapter on bags
   const addChapter = useChaptersStore((state) => state.addChapter);
-  const currentChapterStore = useChaptersStore((state) => state.chapters);
 
   // for control item appear of not
-  const [showChapterItem, setShowChapterItem] = useState(hasChpaterItem);
+  const [showChapterItem, setShowChapterItem] = useState(true);
 
   const chapterEnter = () => {
     // remove RigidBody
     setShowChapterItem(false);
 
     // handle with chapter
-    setPopupOpen(true);
+    setGetChapterPopupOpen(true);
     setCurrentChapter(chapter);
 
     // add item to store
     addChapter(chapter);
 
-    console.log(currentChapterStore);
+    // remove component from scene
+    scene.remove(rigidRef.current);
   };
 
   useFrame((state) => {
@@ -44,8 +47,6 @@ export default function ChapterItem({ hasChpaterItem, chapter }) {
       rigidRef.current.setNextKinematicRotation(quaternionRotation);
     }
   });
-
-  console.log(chapter.no);
 
   return (
     <>
@@ -69,3 +70,5 @@ export default function ChapterItem({ hasChpaterItem, chapter }) {
     </>
   );
 }
+
+export default memo(ChapterItem);

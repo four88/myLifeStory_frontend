@@ -1,11 +1,14 @@
-import Popup from "./Popup";
-import ChapterStatus from "./ChapterStatus";
+import GetChapterPopup from "./GetChapterPopup";
+import BagPopup from "./BagPopup";
+import MenuBar from "./MenuBar";
 
 export default function App() {
+  console.log("app rendered");
   return (
     <>
-      <Popup />
-      <ChapterStatus />
+      <BagPopup />
+      <GetChapterPopup />
+      <MenuBar />
     </>
   );
 }

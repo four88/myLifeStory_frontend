@@ -5,7 +5,6 @@ export default function ChapterStatus() {
   const currentChapter = useChaptersStore((state) => state.currentChapter);
   const maxChapter = useChaptersStore((state) => state.maxChapter);
 
-  console.log(maxChapter);
   return (
     <>
       <section className="chapter-status">

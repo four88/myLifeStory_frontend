@@ -98,6 +98,7 @@ export default function Player() {
       current?.fadeOut(0.2);
       nextActionToPlay?.reset().fadeIn(0.2).play();
       currentAction.current = action;
+      // setCurrentAction(action);
     }
   }, [forward, backward, left, right, shift, jump]);
 

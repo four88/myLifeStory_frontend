@@ -16,6 +16,7 @@ const getRandomPosition = () => {
 
 export const ChapterData = [
   {
+    id: 1,
     no: "1",
     name: "Family",
     img: "",
@@ -23,6 +24,7 @@ export const ChapterData = [
     position: getRandomPosition(),
   },
   {
+    id: 2,
     no: "2",
     name: "Friends",
     img: "",
@@ -30,6 +32,7 @@ export const ChapterData = [
     position: getRandomPosition(),
   },
   {
+    id: 3,
     no: "3",
     name: "High-school",
     img: "",
@@ -37,6 +40,7 @@ export const ChapterData = [
     position: getRandomPosition(),
   },
   {
+    id: 4,
     no: "4",
     name: "University",
     img: "",
@@ -44,6 +48,7 @@ export const ChapterData = [
     position: getRandomPosition(),
   },
   {
+    id: 5,
     no: "5",
     name: "Home",
     img: "",

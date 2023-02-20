@@ -1,0 +1,22 @@
+.menu {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 400px;
+  margin-left: 2rem;
+  display: flex;
+  border: 1px black solid;
+  justify-content: space-between;
+  align-items: top;
+  padding: 10px;
+}
+
+.menu-button__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-button__name {
+  margin: 0;
+}
