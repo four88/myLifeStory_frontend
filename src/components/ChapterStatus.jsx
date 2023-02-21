@@ -8,7 +8,7 @@ export default function ChapterStatus() {
   return (
     <>
       <section className="chapter-status">
-        <h1>
+        <h1 className="chapter-status__heading">
           {currentChapter} / {maxChapter}
         </h1>
       </section>

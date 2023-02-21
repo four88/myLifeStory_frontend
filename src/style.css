@@ -2,6 +2,8 @@
 @import url("./blocks/popup.css");
 @import url("./blocks/chapterStatus.css");
 @import url("./blocks/menuBar.css");
+@import url("./blocks/bagPopup.css");
+@import url("./blocks/chapterCard.css");
 
 html,
 body,
