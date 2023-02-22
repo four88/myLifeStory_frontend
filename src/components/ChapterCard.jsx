@@ -1,6 +1,13 @@
+import usePreviewStore from "../stores/usePreviewStore";
+
 export default function ChapterCard({ chapter }) {
+  const { setPreviewItem } = usePreviewStore();
+
   return (
-    <li className="chapter-card">
+    <li
+      className="chapter-card"
+      onClick={() => setPreviewItem(chapter, "chapter")}
+    >
       <img
         src={chapter.thumbNail}
         alt={chapter.name}

@@ -1,23 +1,45 @@
+import { useEffect } from "react";
 import Popup from "./Popup.jsx";
 import usePopupStore from "../stores/usePopupStore";
-import useChapterStore from "../stores/useChaptersStore";
 import ChapterCard from "./ChapterCard";
 import useChaptersStore from "../stores/useChaptersStore";
+import usePreviewStore from "../stores/usePreviewStore";
+import closeIcon from "/image/closeIcon.svg";
+import ReadChapter from "./ReadChapter.jsx";
+import PreviewHiddenItem from "./PreviewHiddenItem.jsx";
+
+console.log(closeIcon);
 
 export default function BagPopup() {
   // get state from usePopupStore
   const { popupBag, setPopupBag } = usePopupStore();
   const { chapters } = useChaptersStore();
-  console.log(chapters);
+  const { item, status, setPreviewItem } = usePreviewStore();
+
+  // console.log(chapters);
+
+  const selectForReview = (item, status) => {
+    if (status === "chapter") {
+      return <ReadChapter chapter={item} />;
+    }
+    if (status === "hiddenItem") {
+      return <PreviewHiddenItem />;
+    } else {
+      return <div> please select your chapter of item</div>;
+    }
+  };
 
   return (
     <Popup isPopupOpen={popupBag}>
       <section className="bag-popup__container">
         <button
           className="bag-popup__close-button"
-          onClick={() => setPopupBag(false)}
+          onClick={() => {
+            setPopupBag(false);
+            setPreviewItem({}, "");
+          }}
         >
-          X
+          <img src={closeIcon} alt="" className="bag-popup__icon" />
         </button>
 
         <div className="bag-popup__left-section">
@@ -36,7 +58,9 @@ export default function BagPopup() {
           </div>
         </div>
 
-        <div className="bag-popup__right-section"></div>
+        <div className="bag-popup__right-section">
+          {selectForReview(item, status)}
+        </div>
       </section>
     </Popup>
   );

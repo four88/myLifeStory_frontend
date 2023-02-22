@@ -4,6 +4,8 @@
 @import url("./blocks/menuBar.css");
 @import url("./blocks/bagPopup.css");
 @import url("./blocks/chapterCard.css");
+@import url("./blocks/page.css");
+@import url("./blocks/readChapter.css");
 
 html,
 body,
