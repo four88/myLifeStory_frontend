@@ -25,7 +25,21 @@ export default function BagPopup() {
     if (status === "hiddenItem") {
       return <PreviewHiddenItem />;
     } else {
-      return <div> please select your chapter of item</div>;
+      return (
+        <div className="bag-popup__blank">
+          please select your chapter or hidden item
+        </div>
+      );
+    }
+  };
+
+  const checkIfNotNullChapters = (chapters) => {
+    if (chapters.length > 0) {
+      return chapters.map((chapter, index) => {
+        return <ChapterCard key={index} chapter={chapter} />;
+      });
+    } else {
+      return <div className="bag-popup__blank"> You don't have any items</div>;
     }
   };
 
@@ -46,9 +60,7 @@ export default function BagPopup() {
           <div className="bag-popup__section">
             <h1 className="bag-popup__heading">CHAPTER</h1>
             <ul className="bag-popup__section-container">
-              {chapters.map((chapter, index) => {
-                return <ChapterCard key={index} chapter={chapter} />;
-              })}
+              {checkIfNotNullChapters(chapters)}
             </ul>
           </div>
 

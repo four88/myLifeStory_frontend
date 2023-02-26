@@ -9,7 +9,6 @@ export default function GetChapterPopup() {
     (state) => state.setPopupGetChapter
   );
   const chapter = usePopupStore((state) => state.chapter);
-  console.log(isGetChapterPopupOpen);
 
   useEffect(() => {
     if (isGetChapterPopupOpen) {
@@ -23,8 +22,9 @@ export default function GetChapterPopup() {
   return (
     <Popup isPopupOpen={isGetChapterPopupOpen}>
       <div className="getchapter-popup__container">
+        <img src={chapter.thumbNail} alt="" className="getchapter-popup__img" />
         <h1 className="getchapter-popup__header">CHAPTER {chapter.no}</h1>
-        <h2 className="getchapter-popup__sub-header"> - {chapter.name} - </h2>
+        <h2 className="getchapter-popup__sub-header"> {chapter.name}</h2>
         <p className="getchapter-popup__desc">see it on your bag</p>
       </div>
     </Popup>

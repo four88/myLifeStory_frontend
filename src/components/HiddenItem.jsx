@@ -2,43 +2,45 @@ import { RigidBody } from "@react-three/rapier";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState, memo } from "react";
 import usePopupStore from "../stores/usePopupStore";
-import useChaptersStore from "../stores/useChaptersStore";
+import useHiddenItemStore from "../stores/useHiddenItemStore";
 import * as THREE from "three";
 
-function ChapterItem({ chapter }) {
+function HiddenItem({ item }) {
   const { scene } = useThree();
   const rigidRef = useRef();
 
   // store for control popup open and show chapter that player get
-  const setGetChapterPopupOpen = usePopupStore(
-    (state) => state.setPopupGetChapter
-  );
-
-  const setCurrentChapter = usePopupStore((state) => state.setChapter);
+  // const setGetChapterPopupOpen = usePopupStore(
+  //   (state) => state.setPopupGetChapter
+  // );
+  //
+  // const setCurrentChapter = usePopupStore((state) => state.setChapter);
+  const { setPopupGetHiddenItem, setHiddenItem } = usePopupStore();
 
   // store for keep chapter on bags
-  const addChapter = useChaptersStore((state) => state.addChapter);
+  const { addHiddenItem } = useHiddenItemStore();
 
   // for control item appear of not
-  const [showChapterItem, setShowChapterItem] = useState(true);
+  const [showHiddenItem, setShowHiddenItem] = useState(true);
 
   const chapterEnter = () => {
     // remove RigidBody
-    setShowChapterItem(false);
+    setShowHiddenItem(false);
 
-    // handle with chapter
-    setCurrentChapter(chapter);
-    setGetChapterPopupOpen(true);
+    // handle with currentHiddenItem and popup
+    setHiddenItem(item);
+    setPopupGetHiddenItem(true);
 
     // add item to store
-    addChapter(chapter);
+    // addChapter(chapter);
+    addHiddenItem(item);
 
     // remove component from scene
     scene.remove(rigidRef.current);
   };
 
   useFrame((state) => {
-    if (showChapterItem) {
+    if (showHiddenItem) {
       const time = state.clock.getElapsedTime();
 
       const eulerRotation = new THREE.Euler(0, time, 0);
@@ -50,20 +52,16 @@ function ChapterItem({ chapter }) {
 
   return (
     <>
-      {showChapterItem && (
+      {showHiddenItem && (
         <RigidBody
           ref={rigidRef}
           type="kinematicPosition"
-          position={[
-            chapter.position.x,
-            chapter.position.y,
-            chapter.position.z,
-          ]}
+          position={[item.position.x, item.position.y, item.position.z]}
           onCollisionEnter={chapterEnter}
         >
           <mesh>
             <boxGeometry />
-            <meshStandardMaterial color="red" />
+            <meshStandardMaterial color="blue" />
           </mesh>
         </RigidBody>
       )}
@@ -71,4 +69,4 @@ function ChapterItem({ chapter }) {
   );
 }
 
-export default memo(ChapterItem);
+export default memo(HiddenItem);

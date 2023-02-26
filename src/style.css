@@ -1,4 +1,4 @@
-@import url("./fonts/font.css");
+@import url("./fonts/fonts.css");
 @import url("./blocks/popup.css");
 @import url("./blocks/chapterStatus.css");
 @import url("./blocks/menuBar.css");
@@ -6,6 +6,8 @@
 @import url("./blocks/chapterCard.css");
 @import url("./blocks/page.css");
 @import url("./blocks/readChapter.css");
+@import url("./blocks/getChapterPopup.css");
+@import url("./blocks/getHiddenItemPopup.css");
 
 html,
 body,

@@ -137,3 +137,46 @@ export const ChapterData = [
     ],
   },
 ];
+
+export const HiddenItemData = [
+  {
+    id: 1,
+    no: "1",
+    name: "Camera",
+    desc: "This camera is the gift from mom",
+    position: getRandomPosition(),
+    img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80",
+  },
+  {
+    id: 2,
+    no: "2",
+    name: "First Photo with Family",
+    desc: "This photo is the first picture with Family",
+    position: getRandomPosition(),
+    img: "https://images.unsplash.com/photo-1611516818236-8faa056fb659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=5070&q=80",
+  },
+  {
+    id: 3,
+    no: "3",
+    name: "Teddy Bear",
+    desc: "This is the gift from Dad on my birthday",
+    position: getRandomPosition(),
+    img: "https://images.unsplash.com/photo-1588090644556-14707d0e886a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
+  },
+  {
+    id: 4,
+    no: "4",
+    name: "Photo with friend",
+    desc: "Photo with friend on freshy year in University",
+    position: getRandomPosition(),
+    img: "https://images.unsplash.com/photo-1530047139082-5435ca3c4614?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80",
+  },
+  {
+    id: 5,
+    no: "5",
+    name: "Comic book",
+    desc: "My best friend gave to me on my 16 birthday",
+    position: getRandomPosition(),
+    img: "https://images.unsplash.com/photo-1531501410720-c8d437636169?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80",
+  },
+];

@@ -1,6 +1,7 @@
 import GetChapterPopup from "./GetChapterPopup";
 import BagPopup from "./BagPopup";
 import MenuBar from "./MenuBar";
+import GetHiddenItemPopup from "./GetHiddenItemPopup";
 
 export default function App() {
   console.log("app rendered");
@@ -8,6 +9,7 @@ export default function App() {
     <>
       <BagPopup />
       <GetChapterPopup />
+      <GetHiddenItemPopup />
       <MenuBar />
     </>
   );

@@ -10,8 +10,13 @@
   background: #ffffff;
   border-radius: 10px;
   margin: 0;
-
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: #1a1b22;
 }
 
 .page__img {
@@ -28,4 +33,5 @@
   bottom: 0;
   right: 20px;
   font-size: 12px;
+  color: #e8e8e8;
 }
