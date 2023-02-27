@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import Popup from "./Popup.jsx";
 import usePopupStore from "../stores/usePopupStore";
 import ChapterCard from "./ChapterCard";
+import HiddenItemCard from "./HiddenItemCard";
 import useChaptersStore from "../stores/useChaptersStore";
+import useHiddenItemStore from "../stores/useHiddenItemStore";
 import usePreviewStore from "../stores/usePreviewStore";
 import closeIcon from "/image/closeIcon.svg";
 import ReadChapter from "./ReadChapter.jsx";
@@ -11,10 +13,11 @@ import PreviewHiddenItem from "./PreviewHiddenItem.jsx";
 console.log(closeIcon);
 
 export default function BagPopup() {
-  // get state from usePopupStore
+  // get state from stores
   const { popupBag, setPopupBag } = usePopupStore();
   const { chapters } = useChaptersStore();
   const { item, status, setPreviewItem } = usePreviewStore();
+  const { hiddenItems } = useHiddenItemStore();
 
   // console.log(chapters);
 
@@ -23,7 +26,7 @@ export default function BagPopup() {
       return <ReadChapter chapter={item} />;
     }
     if (status === "hiddenItem") {
-      return <PreviewHiddenItem />;
+      return <PreviewHiddenItem item={item} />;
     } else {
       return (
         <div className="bag-popup__blank">
@@ -39,7 +42,21 @@ export default function BagPopup() {
         return <ChapterCard key={index} chapter={chapter} />;
       });
     } else {
-      return <div className="bag-popup__blank"> You don't have any items</div>;
+      return (
+        <div className="bag-popup__blank"> You don't have any chapter</div>
+      );
+    }
+  };
+
+  const checkIfNotNullItem = (items) => {
+    if (items.length > 0) {
+      return items.map((item, index) => {
+        return <HiddenItemCard key={index} item={item} />;
+      });
+    } else {
+      return (
+        <div className="bag-popup__blank"> You don't have any hidden item</div>
+      );
     }
   };
 
@@ -66,7 +83,9 @@ export default function BagPopup() {
 
           <div className="bag-popup__section">
             <h1 className="bag-popup__heading">HIDDEN ITEM</h1>
-            <div className="bag-popup__section-container"></div>
+            <ul className="bag-popup__section-container">
+              {checkIfNotNullItem(hiddenItems)}
+            </ul>
           </div>
         </div>
 

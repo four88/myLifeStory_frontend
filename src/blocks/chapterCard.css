@@ -44,4 +44,10 @@
   font-weight: 400;
   font-size: 14px;
   color: #2f71e5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }

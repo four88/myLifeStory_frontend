@@ -8,6 +8,8 @@
 @import url("./blocks/readChapter.css");
 @import url("./blocks/getChapterPopup.css");
 @import url("./blocks/getHiddenItemPopup.css");
+@import url("./blocks/hiddenItemCard.css");
+@import url("./blocks/previewHiddenItem.css");
 
 html,
 body,

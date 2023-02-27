@@ -1,0 +1,40 @@
+.preview-hidden-item {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 20px;
+  align-self: start;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #ffffff;
+  border-radius: 10px;
+  margin: 0;
+  margin-top: 45px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 138%;
+  color: #2f71e5;
+}
+
+.preview-hidden-item__img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.preview-hidden-item__content {
+  width: 100%;
+  color: #1a1b22;
+}
+
+.preview-hidden-item__heading {
+  margin-top: 0;
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 138%;
+}
