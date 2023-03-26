@@ -11,6 +11,10 @@
 @import url("./blocks/hiddenItemCard.css");
 @import url("./blocks/previewHiddenItem.css");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body,
 #root {

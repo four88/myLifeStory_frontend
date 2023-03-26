@@ -1,3 +1,4 @@
+import { Perf } from "r3f-perf";
 import Light from "./Light";
 import Player from "./Player";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
@@ -42,6 +43,7 @@ export default function Experience() {
 
     return (
         <>
+            <Perf position="top-left" />
             <Light />
             <Player />
             <RigidBody type="fixed" position-y={-1.25}>
