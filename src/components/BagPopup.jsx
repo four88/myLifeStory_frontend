@@ -10,8 +10,6 @@ import closeIcon from "/image/closeIcon.svg";
 import ReadChapter from "./ReadChapter.jsx";
 import PreviewHiddenItem from "./PreviewHiddenItem.jsx";
 
-console.log(closeIcon);
-
 export default function BagPopup() {
   // get state from stores
   const { popupBag, setPopupBag } = usePopupStore();

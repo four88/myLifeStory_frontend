@@ -7,8 +7,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  transition-duration: 0.3s;
 }
 
 .popup_close {
   visibility: hidden;
+
+  transition-duration: 0.3s;
 }

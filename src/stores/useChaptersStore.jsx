@@ -21,6 +21,11 @@ const useChaptersStore = create((set) => ({
     });
   },
   setMaxChapter: (noOfChapter) => set({ maxChapter: noOfChapter }),
+  clearChapter: () => {
+    set({ maxChapter: 0 });
+    set({ currentChapter: 0 });
+    set({ chapters: [] });
+  },
 }));
 
 export default useChaptersStore;

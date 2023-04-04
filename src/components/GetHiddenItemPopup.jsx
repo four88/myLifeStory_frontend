@@ -24,7 +24,7 @@ export default function GetHiddenItemPopup() {
 
   return (
     <Popup isPopupOpen={popupGetHiddenItem}>
-      <div className="getitem-popup__container">
+      <div className="getitem-popup__container px-4 py-4 pb-6">
         <img src={hiddenItem.img} alt="" className="getitem-popup__img" />
         <h2 className="getitem-popup__header">You got new hidden item!</h2>
         <h1 className="getitem-popup__sub-header">{hiddenItem.name}</h1>

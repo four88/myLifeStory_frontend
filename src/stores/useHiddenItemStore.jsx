@@ -21,6 +21,11 @@ const useHiddenItemStore = create((set) => ({
     });
   },
   setMaxHiddenItem: (noOfItem) => set({ maxHiddenItems: noOfItem }),
+  clearHiddenItem: () => {
+    set({ maxHiddenItems: 0 });
+    set({ currentHiddenItems: 0 });
+    set({ hiddenItems: [] });
+  },
 }));
 
 export default useHiddenItemStore;

@@ -1,42 +1,14 @@
 import "./style.css";
-import React, { Suspense } from "react";
-
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { Canvas } from "@react-three/fiber";
-import Experience from "./components/Experience.jsx";
-import { Physics, Debug } from "@react-three/rapier";
 import App from "./components/App";
-import Login from "./components/Login";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
     <>
         <BrowserRouter>
-            <Switch>
-                <Route path="/" exact>
-                    <Canvas
-                        shadows
-                        camera={{
-                            fov: 45,
-                            near: 0.1,
-                            far: 100,
-                            position: [1, 2, 6],
-                        }}
-                    >
-                        <Suspense>
-                            <Physics gravity={[0, -9.81, 0]}>
-                                <Debug />
-                                <Experience />
-                            </Physics>
-                        </Suspense>
-                    </Canvas>
-                    <App />
-                </Route>
-                <Route path="/login">
-                    <Login />
-                </Route>
-            </Switch>
+            <App />
         </BrowserRouter>
     </>
 );

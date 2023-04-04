@@ -21,7 +21,7 @@ export default function GetChapterPopup() {
 
   return (
     <Popup isPopupOpen={isGetChapterPopupOpen}>
-      <div className="getchapter-popup__container">
+      <div className="getchapter-popup__container px-4 py-4 pb-6">
         <img src={chapter.thumbNail} alt="" className="getchapter-popup__img" />
         <h1 className="getchapter-popup__header">CHAPTER {chapter.no}</h1>
         <h2 className="getchapter-popup__sub-header"> {chapter.name}</h2>

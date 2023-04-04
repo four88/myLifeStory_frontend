@@ -40,6 +40,7 @@ const PATH = "./model";
 
 export default function Player() {
   const characterObj = useGLTF(`${PATH}/player.glb`);
+
   const { actions } = useAnimations(
     characterObj.animations,
     characterObj.scene
@@ -138,6 +139,13 @@ export default function Player() {
       walkDirection.normalize();
       walkDirection.applyAxisAngle(rotateAngle, newDirectionOffset);
 
+      // camera.getWorldDirection(walkDirection);
+      // walkDirection.x = -walkDirection.x;
+      // walkDirection.z = -walkDirection.z;
+      // walkDirection.y = 0;
+      // walkDirection.normalize();
+      // walkDirection.applyAxisAngle(rotateAngle, newDirectionOffset);
+
       // run/walk velocity
       const velocity = currentAction.current == "running" ? 10 : 5;
 
@@ -157,7 +165,7 @@ export default function Player() {
 
   return (
     <>
-      <OrbitControls ref={controlsRef} />
+      <OrbitControls ref={controlsRef} enableZoom={false} />
       <Sky />
       <RigidBody
         ref={rigidRef}

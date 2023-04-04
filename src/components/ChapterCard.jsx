@@ -15,7 +15,7 @@ export default function ChapterCard({ chapter }) {
       />
       <div className="chapter-card__info">
         <h2 className="chapter-card__no">Chapter: {chapter.no}</h2>
-        <p className="chapter-card__name">{chapter.name}</p>
+        <p className="chapter-card__name truncate w-32">{chapter.name}</p>
       </div>
     </li>
   );

@@ -2,13 +2,14 @@
   position: absolute;
   top: 2%;
   right: 2%;
-  width: 300px;
+  width: auto;
   margin-left: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: top;
-  padding: 20px;
-  background-color: #ffffff;
+  padding: 16px;
+  gap: 22px;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 25px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
@@ -31,17 +32,18 @@
 }
 
 .menu-button {
-  width: 45px;
+  width: auto;
   background: none;
   border: none;
 }
 
 .menu-button__icon {
-  width: 100%;
+  width: 32px;
   height: 100%;
   object-fit: cover;
 }
 
 .menu-button__name {
   margin: 0;
+  font-size: 14px;
 }

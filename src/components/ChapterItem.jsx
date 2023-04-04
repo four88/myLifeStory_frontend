@@ -5,7 +5,7 @@ import usePopupStore from "../stores/usePopupStore";
 import useChaptersStore from "../stores/useChaptersStore";
 import * as THREE from "three";
 
-function ChapterItem({ chapter }) {
+function ChapterItem({ chapter, position }) {
   const { scene } = useThree();
   const rigidRef = useRef();
 
@@ -54,16 +54,12 @@ function ChapterItem({ chapter }) {
         <RigidBody
           ref={rigidRef}
           type="kinematicPosition"
-          position={[
-            chapter.position.x,
-            chapter.position.y,
-            chapter.position.z,
-          ]}
+          position={[position.x, position.y, position.z]}
           onCollisionEnter={chapterEnter}
         >
-          <mesh>
+          <mesh castShadow receiveShadow>
             <boxGeometry />
-            <meshStandardMaterial color="red" />
+            <meshPhongMaterial emissive="red" />
           </mesh>
         </RigidBody>
       )}

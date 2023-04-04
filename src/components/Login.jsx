@@ -7,17 +7,19 @@ export default function Login() {
   const { setIsLogin, setUser } = useUserStore();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
 
+  const history = useHistory();
+
   const handleLogin = (evt) => {
     evt.preventDefault();
+    console.log(loginForm);
     userApi.loginUser(loginForm.email, loginForm.password).then((res) => {
       setIsLogin(true);
-
       setUser(res);
-
       history.push("/");
       setLoginForm({ email: "", password: "" });
     });
   };
+
   return (
     <section className="w-full h-screen flex justify-center items-center bg-gray-200">
       <div className="font-roboto w-[396px] bg-white px-12 py-8 rounded-xl drop-shadow-lg">

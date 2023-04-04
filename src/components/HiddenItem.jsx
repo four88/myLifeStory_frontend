@@ -5,7 +5,7 @@ import usePopupStore from "../stores/usePopupStore";
 import useHiddenItemStore from "../stores/useHiddenItemStore";
 import * as THREE from "three";
 
-function HiddenItem({ item }) {
+function HiddenItem({ item, position }) {
   const { scene } = useThree();
   const rigidRef = useRef();
 
@@ -56,10 +56,10 @@ function HiddenItem({ item }) {
         <RigidBody
           ref={rigidRef}
           type="kinematicPosition"
-          position={[item.position.x, item.position.y, item.position.z]}
+          position={[position.x, position.y, position.z]}
           onCollisionEnter={chapterEnter}
         >
-          <mesh>
+          <mesh castShadow receiveShadow>
             <boxGeometry />
             <meshStandardMaterial color="blue" />
           </mesh>
