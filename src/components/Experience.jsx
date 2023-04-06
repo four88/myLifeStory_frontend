@@ -18,9 +18,10 @@ import { Environment, Stage } from "@react-three/drei";
 import Library from "./Library";
 import FireTruck from "./FireTruck";
 import Rock from "./Rock";
+import { useLoader } from "@react-three/fiber";
 
 export default function Experience() {
-    const minItemDistance = 5; // Adjust this value based on your requirements
+    const minItemDistance = 20; // Adjust this value based on your requirements
     const housePosition = new THREE.Vector3(-30, -1, 40);
     const libraryPosition = new THREE.Vector3(50, -1, 30);
     const truckPosition = new THREE.Vector3(-20, -1, -30);
@@ -110,12 +111,22 @@ export default function Experience() {
     return (
         <>
             <Perf position="top-left" />
+
             <Light />
+
+            <fog attach="fog" args={["white", 5, 50]} />
+            <Environment
+                background={false}
+                files={
+                    "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/hdris/the-sky-is-on-fire/the_sky_is_on_fire_1k.hdr"
+                }
+            />
             <Player />
+
             <RigidBody type="fixed" position-y={-1.25}>
                 <mesh receiveShadow>
                     <boxGeometry args={[150, 0.5, 150]} />
-                    <meshStandardMaterial color="greenyellow" />
+                    <meshStandardMaterial color={"greenyellow"} attach="material" />
                 </mesh>
             </RigidBody>
             {chapterItems}

@@ -14,13 +14,13 @@ export default function MainGame() {
       <Canvas
         shadows
         camera={{
-          fov: 35,
+          fov: 40,
           near: 0.1,
-          far: 100,
-          position: [1, 2, 6],
+          far: 50,
+          position: [1, 1, 6],
         }}
       >
-        <Suspense>
+        <Suspense fallback={""}>
           <Physics gravity={[0, -9.81, 0]}>
             {/* <Debug /> */}
             <Experience />

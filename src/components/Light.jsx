@@ -8,7 +8,7 @@ export default function Lights() {
 
   const camera = useThree((state) => state.camera);
 
-  useHelper(light, THREE.DirectionalLightHelper, 1);
+  // useHelper(light, THREE.DirectionalLightHelper, 1);
 
   useFrame((state) => {
     light.current.target.position.z = camera.position.z;
@@ -30,7 +30,7 @@ export default function Lights() {
         ref={light}
         castShadow
         position={[1, 20, 1]}
-        intensity={0.8}
+        intensity={0.5}
         shadow-mapSize={[2048, 2048]}
         shadow-camera-near={0.2}
         shadow-camera-far={400}
@@ -41,7 +41,7 @@ export default function Lights() {
         shadow-camera-position={[1, 10, 1]}
         shadow-camera-fov={40}
       />
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.1} />
     </>
   );
 }

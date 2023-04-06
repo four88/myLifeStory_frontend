@@ -3,9 +3,13 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState, memo } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import useChaptersStore from "../stores/useChaptersStore";
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
+// import { useMatcapTexture } from "use-r3f-assets";
 
 function ChapterItem({ chapter, position }) {
+  const matcap = useTexture("/texture/7877EE_D87FC5_75D9C7_1C78C0-256px.png");
+
   const { scene } = useThree();
   const rigidRef = useRef();
 
@@ -59,7 +63,7 @@ function ChapterItem({ chapter, position }) {
         >
           <mesh castShadow receiveShadow>
             <boxGeometry />
-            <meshPhongMaterial emissive="red" />
+            <meshMatcapMaterial matcap={matcap} />
           </mesh>
         </RigidBody>
       )}

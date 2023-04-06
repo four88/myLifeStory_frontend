@@ -3,11 +3,15 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState, memo } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import useHiddenItemStore from "../stores/useHiddenItemStore";
+
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 function HiddenItem({ item, position }) {
   const { scene } = useThree();
   const rigidRef = useRef();
+
+  const matcap = useTexture("texture/F75F0B_461604_9A3004_FB9D2F-256px.png");
 
   // store for control popup open and show chapter that player get
   // const setGetChapterPopupOpen = usePopupStore(
@@ -61,7 +65,7 @@ function HiddenItem({ item, position }) {
         >
           <mesh castShadow receiveShadow>
             <boxGeometry />
-            <meshStandardMaterial color="blue" />
+            <meshMatcapMaterial matcap={matcap} />
           </mesh>
         </RigidBody>
       )}

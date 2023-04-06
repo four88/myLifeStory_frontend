@@ -14,7 +14,7 @@ export default function Library(props) {
   });
 
   return (
-    <RigidBody type="fixed">
+    <RigidBody type="fixed" colliders="hull">
       <primitive object={scene} {...props} />;
     </RigidBody>
   );

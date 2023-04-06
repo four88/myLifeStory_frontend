@@ -27,6 +27,7 @@
     "react-router-dom": "^5.3.4",
     "react-three-third-person": "^0.4.6",
     "three": "^0.148.0",
+    "use-r3f-assets": "^0.1.1",
     "vite-plugin-glsl": "^1.1.0",
     "zustand": "^4.3.3"
   }

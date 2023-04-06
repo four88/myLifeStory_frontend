@@ -57,7 +57,7 @@ export default function Login() {
               name="password"
               id="password"
               value={loginForm.password}
-              className="px-2 py-1 rounded-md"
+              className="px-2 py-1 rounded-md bg-gray-200"
               onChange={(evt) =>
                 setLoginForm({ ...loginForm, password: evt.target.value })
               }
