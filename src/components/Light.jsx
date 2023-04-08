@@ -27,13 +27,14 @@ export default function Lights() {
   return (
     <>
       <directionalLight
+        color="purple"
         ref={light}
         castShadow
         position={[1, 20, 1]}
-        intensity={0.5}
+        intensity={0.3}
         shadow-mapSize={[2048, 2048]}
         shadow-camera-near={0.2}
-        shadow-camera-far={400}
+        shadow-camera-far={20}
         shadow-camera-top={50}
         shadow-camera-right={10}
         shadow-camera-bottom={-10}
@@ -41,7 +42,7 @@ export default function Lights() {
         shadow-camera-position={[1, 10, 1]}
         shadow-camera-fov={40}
       />
-      <ambientLight intensity={0.1} />
+      <ambientLight intensity={0.1} color="orange" />
     </>
   );
 }

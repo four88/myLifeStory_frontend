@@ -1,8 +1,8 @@
 .page {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  height: 90%;
+  width: 550px;
+  height: auto;
   padding: 20px;
   align-items: center;
   justify-content: center;
@@ -21,11 +21,14 @@
 
 .page__img {
   width: 100%;
+  height: 350px;
   border-radius: 10px;
 }
 
 .page__content {
   width: 100%;
+  margin-top: 22px;
+  font-size: 14px;
 }
 
 .page__no {

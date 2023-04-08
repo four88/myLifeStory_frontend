@@ -8,23 +8,16 @@ import ChapterItem from "./ChapterItem";
 import chapterApi from "../api/ChapterApi";
 import hiddenItemApi from "../api/HiddenItemApi";
 import HiddenItem from "./HiddenItem";
-import { ChapterData, HiddenItemData } from "../Utils/ChapterData";
 import useChaptersStore from "../stores/useChaptersStore";
 import useHiddenItemStore from "../stores/useHiddenItemStore";
 import Tree from "./Tree";
-import House from "./House";
-import useUserStore from "../stores/useUserStore";
-import { Environment, Stage } from "@react-three/drei";
-import Library from "./Library";
-import FireTruck from "./FireTruck";
 import Rock from "./Rock";
-import { useLoader } from "@react-three/fiber";
+import Ship from "./Ship";
+import useUserStore from "../stores/useUserStore";
+import { Environment, Stars } from "@react-three/drei";
 
 export default function Experience() {
-    const minItemDistance = 20; // Adjust this value based on your requirements
-    const housePosition = new THREE.Vector3(-30, -1, 40);
-    const libraryPosition = new THREE.Vector3(50, -1, 30);
-    const truckPosition = new THREE.Vector3(-20, -1, -30);
+    const minItemDistance = 2; // Adjust this value based on your requirements
 
     const usedPositions = [];
     const getRandomInt = (max) => {
@@ -35,15 +28,12 @@ export default function Experience() {
         let position;
         do {
             position = new THREE.Vector3(
-                getRandomInt(150),
+                getRandomInt(100),
                 position_y,
-                getRandomInt(150)
+                getRandomInt(100)
             );
         } while (
-            usedPositions.some((p) => p.distanceTo(position) < minItemDistance) ||
-            position.distanceTo(housePosition) < minItemDistance ||
-            position.distanceTo(libraryPosition) < minItemDistance ||
-            position.distanceTo(truckPosition) < minItemDistance
+            usedPositions.some((p) => p.distanceTo(position) < minItemDistance)
         );
         usedPositions.push(position);
         return position;
@@ -72,6 +62,7 @@ export default function Experience() {
                     .then((res) => {
                         setHiddenItemData(res.data);
                         setMaxHiddenItem(res.data.length);
+                        console.log(treePositions);
                     })
 
                     .catch((err) => console.log(err));
@@ -108,34 +99,62 @@ export default function Experience() {
         [hiddenItemData]
     );
 
+    const [treePositions, setTreePositions] = useState([]);
+    const [rockPositions, setRockPositions] = useState([]);
+    const [shipPosition, setShipPosition] = useState(null);
+
+    useEffect(() => {
+        const trees = Array(30)
+            .fill(null)
+            .map(() => getRandomPosition(0));
+        setTreePositions(trees);
+
+        const rocks = Array(10)
+            .fill(null)
+            .map(() => getRandomPosition(0));
+        setRockPositions(rocks);
+
+        setShipPosition(getRandomPosition(0));
+    }, []);
+
+    const generateTrees = () => {
+        return treePositions.map((item, index) => (
+            <Tree key={`tree-${index}`} treePosition={item} />
+        ));
+    };
+
+    const generateRocks = () => {
+        return rockPositions.map((item, index) => (
+            <Rock key={`rock-${index}`} rockPosition={item} />
+        ));
+    };
+
     return (
         <>
             <Perf position="top-left" />
 
             <Light />
 
-            <fog attach="fog" args={["white", 5, 50]} />
-            <Environment
-                background={false}
-                files={
-                    "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/hdris/the-sky-is-on-fire/the_sky_is_on_fire_1k.hdr"
-                }
-            />
+            <Stars />
+            <fog attach="fog" args={["#030202", 5, 50]} />
+            <Environment background={false} preset="night" />
             <Player />
 
             <RigidBody type="fixed" position-y={-1.25}>
                 <mesh receiveShadow>
-                    <boxGeometry args={[150, 0.5, 150]} />
-                    <meshStandardMaterial color={"greenyellow"} attach="material" />
+                    <boxGeometry args={[100, 0.5, 100]} />
+                    <meshStandardMaterial
+                        color={"greenyellow"}
+                        attach="material"
+                        envMapIntensity={0.5}
+                    />
                 </mesh>
             </RigidBody>
             {chapterItems}
             {hiddenItemsList}
-            {/* <gridHelper args={[100, 100]} position-y={-0.99} /> */}
-            <House position={[-30, -1, 40]} scale={25} />
-            <Library position={[50, -1, 30]} scale={15} />
-            <FireTruck position={[-20, -1.1, -30]} scale={3} />
-            <Rock position={[0, -1, 8]} scale={5} />
+            {generateTrees()}
+            {generateRocks()}
+            {shipPosition && <Ship shipPosition={shipPosition} />}
         </>
     );
 }

@@ -1,4 +1,4 @@
-import { Sky, OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -166,7 +166,6 @@ export default function Player() {
   return (
     <>
       <OrbitControls ref={controlsRef} enableZoom={false} />
-      <Sky />
       <RigidBody
         ref={rigidRef}
         type="dynamic"
@@ -177,6 +176,14 @@ export default function Player() {
         inertia={[100, 100, 100]}
         linearDamping={100.0}
       >
+        <pointLight
+          position={[0, 2, 0]} // You can change the position relative to the item
+          distance={10} // You can adjust the distance to control the light's reach
+          intensity={4} // Adjust the intensity of the light
+          decay={8} // Adjust the decay of the light
+          color="#FFDd80"
+        />
+
         <primitive object={characterObj.scene} position={[0, 0, 0]} />
       </RigidBody>
     </>

@@ -7,32 +7,35 @@ import MenuBar from "./MenuBar";
 import GetHiddenItemPopup from "./GetHiddenItemPopup";
 import { Suspense } from "react";
 import CostumePopup from "./CostumePopup.jsx";
+import Loading from "./Loading.jsx";
 
 export default function MainGame() {
   return (
     <>
-      <Canvas
-        shadows
-        camera={{
-          fov: 40,
-          near: 0.1,
-          far: 50,
-          position: [1, 1, 6],
-        }}
-      >
-        <Suspense fallback={""}>
+      <Suspense fallback={<Loading />}>
+        <Canvas
+          shadows
+          camera={{
+            fov: 40,
+            near: 0.1,
+            far: 500,
+            position: [1, 1, 6],
+          }}
+        >
           <Physics gravity={[0, -9.81, 0]}>
             {/* <Debug /> */}
             <Experience />
-          </Physics>
-        </Suspense>
-      </Canvas>
 
-      <BagPopup />
-      <GetChapterPopup />
-      <GetHiddenItemPopup />
-      <CostumePopup />
-      <MenuBar />
+            <color args={["#030202"]} attach="background" />
+          </Physics>
+        </Canvas>
+
+        <BagPopup />
+        <GetChapterPopup />
+        <GetHiddenItemPopup />
+        <CostumePopup />
+        <MenuBar />
+      </Suspense>
     </>
   );
 }

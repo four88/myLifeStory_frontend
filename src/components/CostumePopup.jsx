@@ -7,19 +7,10 @@ import PlayerCostume from "./PlayerCostume";
 import CostumeForm from "./CostumeForm";
 import closeIcon from "/image/closeIcon.svg";
 import usePopupStore from "../stores/usePopupStore";
+import { Environment } from "@react-three/drei";
 
 export default function CostumePopup() {
   const { popupCostume, setPopupCostume } = usePopupStore();
-  const [showModel, setShowModel] = useState(true);
-
-  useEffect(() => {
-    if (!popupCostume) {
-      setShowModel(false);
-    } else {
-      setShowModel(true);
-    }
-  }, [popupCostume]);
-
   return (
     <Popup isPopupOpen={popupCostume}>
       <section className="w-[968px] bg-white h-[698px] z-20 rounded-lg relative flex flex-row drop-shadow-2xl px-8 py-8">
@@ -32,22 +23,26 @@ export default function CostumePopup() {
           <img src={closeIcon} alt="closeIcon" className="m-auto w-3 h-3" />
         </button>
         <div className="w-[60%] h-full">
-          {showModel && (
-            <Canvas
-              shadows
-              camera={{
-                fov: 43,
-                near: 0.1,
-                far: 100,
-                position: [1, 1.75, 6],
-              }}
-            >
-              <Suspense>
-                <PlayerCostume />
-              </Suspense>
-              <Light />
-            </Canvas>
-          )}
+          <Canvas
+            shadows
+            camera={{
+              fov: 43,
+              near: 0.1,
+              far: 100,
+              position: [1, 1.75, 6],
+            }}
+          >
+            <Suspense>
+              <PlayerCostume />
+            </Suspense>
+
+            <Environment
+              background={false}
+              files={
+                "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/hdris/the-sky-is-on-fire/the_sky_is_on_fire_1k.hdr"
+              }
+            />
+          </Canvas>
         </div>
         <div className="w-[40%] h-full bg-gray-100 rounded-lg drop-shadow-md">
           <CostumeForm />

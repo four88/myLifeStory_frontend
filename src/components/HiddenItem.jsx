@@ -3,6 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState, memo } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import useHiddenItemStore from "../stores/useHiddenItemStore";
+import { useGLTF, useHelper, Sparkles } from "@react-three/drei";
 
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -54,20 +55,51 @@ function HiddenItem({ item, position }) {
     }
   });
 
+  const itemMesh = useGLTF("./model/item.glb");
+
+  itemMesh.scene.traverse((obj) => {
+    if (obj.isMesh) {
+      obj.castShadow = true;
+
+      obj.receiveShadow = true;
+    }
+  });
+
   return (
     <>
       {showHiddenItem && (
-        <RigidBody
-          ref={rigidRef}
-          type="kinematicPosition"
-          position={[position.x, position.y, position.z]}
-          onCollisionEnter={chapterEnter}
-        >
-          <mesh castShadow receiveShadow>
-            <boxGeometry />
-            <meshMatcapMaterial matcap={matcap} />
-          </mesh>
-        </RigidBody>
+        <>
+          <Sparkles
+            color="orange"
+            size={40}
+            speed={0.6}
+            scale={[4, 2, 4]}
+            count={20}
+            position={[position.x, 1, position.z]}
+          />
+          <RigidBody
+            ref={rigidRef}
+            type="kinematicPosition"
+            colliders="cuboid"
+            position={[position.x, -0.5, position.z]}
+            onCollisionEnter={chapterEnter}
+          >
+            <pointLight
+              castShadow
+              position={[0, 3, 0]} // You can change the position relative to the item
+              distance={8} // You can adjust the distance to control the light's reach
+              intensity={6} // Adjust the intensity of the light
+              decay={4} // Adjust the decay of the light
+              color="orange"
+            />
+
+            <primitive
+              object={itemMesh.scene.clone()}
+              scale={1}
+              envMapIntensity={0.5}
+            />
+          </RigidBody>
+        </>
       )}
     </>
   );

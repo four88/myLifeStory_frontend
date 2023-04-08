@@ -108,7 +108,7 @@ export default function CostumeForm() {
               style={{ backgroundColor: `${avatar.hair}` }}
               className={` ${pickerRole === "hair"
                   ? "w-16 h-16 rounded-xl border-4 border-orange-500 drop-shadow-md"
-                  : "w-16 h-16 rounded-xl drop-shadow-md"
+                  : "w-16 h-16 rounded-xl drop-shadow-md border-4 border-gray-200"
                 }`}
               onClick={() => setPickerRole("hair")}
             ></button>
@@ -125,8 +125,8 @@ export default function CostumeForm() {
               type="button"
               style={{ backgroundColor: `${avatar.skin}` }}
               className={` ${pickerRole === "skin"
-                  ? "w-16 h-16 rounded-xl border-4 border-orange-500 drop-shadow-md"
-                  : "w-16 h-16 rounded-xl drop-shadow-md"
+                  ? "w-16 h-16 rounded-xl border-4 border-orange-500 drop-shadow-md bg-red-200"
+                  : "w-16 h-16 rounded-xl drop-shadow-md border-4 border-gray-200"
                 }`}
               onClick={() => setPickerRole("skin")}
             ></button>
@@ -145,8 +145,8 @@ export default function CostumeForm() {
               type="button"
               style={{ backgroundColor: `${avatar.top}` }}
               className={` ${pickerRole === "top"
-                  ? "w-16 h-16 rounded-xl border-4 border-orange-500 drop-shadow-md"
-                  : "w-16 h-16 rounded-xl drop-shadow-md"
+                  ? "w-16 h-16 rounded-xl border-4 border-orange-500 drop-shadow-md bg-sky-200"
+                  : "w-16 h-16 rounded-xl drop-shadow-md border-4 border-gray-200"
                 }`}
               onClick={() => setPickerRole("top")}
             ></button>
@@ -161,7 +161,7 @@ export default function CostumeForm() {
               style={{ backgroundColor: `${avatar.bottom}` }}
               className={` ${pickerRole === "bottom"
                   ? "w-16 h-16 rounded-xl border-4 border-orange-500 drop-shadow-md"
-                  : "w-16 h-16 rounded-xl drop-shadow-md"
+                  : "w-16 h-16 rounded-xl drop-shadow-md border-4 border-gray-200"
                 }`}
               onClick={() => setPickerRole("bottom")}
             ></button>
