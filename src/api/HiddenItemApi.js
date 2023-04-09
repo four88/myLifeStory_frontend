@@ -69,7 +69,7 @@ class HiddenItemApi {
 }
 
 const hiddenItemApi = new HiddenItemApi({
-  baseUrl: `http://localhost:3000`,
+  baseUrl: `http://104.196.253.173`,
 });
 
 export default hiddenItemApi;
