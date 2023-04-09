@@ -3,7 +3,7 @@ import { Perf } from "r3f-perf";
 import Light from "./Light";
 import Player from "./Player";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import ChapterItem from "./ChapterItem";
 import chapterApi from "../api/ChapterApi";
 import hiddenItemApi from "../api/HiddenItemApi";
@@ -14,7 +14,8 @@ import Tree from "./Tree";
 import Rock from "./Rock";
 import Ship from "./Ship";
 import useUserStore from "../stores/useUserStore";
-import { Environment, Stars } from "@react-three/drei";
+import { Environment, Stars, shaderMaterial } from "@react-three/drei";
+import { PlaneGeometry } from "three";
 
 export default function Experience() {
     const minItemDistance = 2; // Adjust this value based on your requirements
@@ -139,7 +140,10 @@ export default function Experience() {
             <fog attach="fog" args={["#030202", 5, 50]} />
             <Environment background={false} preset="night" />
             <Player />
-
+            <CuboidCollider args={[50, 2, 0.5]} position={[0, 1, 51]} />
+            <CuboidCollider args={[50, 2, 0.5]} position={[0, 1, -51]} />
+            <CuboidCollider args={[0.5, 2, 50]} position={[51, 1, 0]} />
+            <CuboidCollider args={[0.5, 2, 50]} position={[-51, 1, 0]} />
             <RigidBody type="fixed" position-y={-1.25}>
                 <mesh receiveShadow>
                     <boxGeometry args={[100, 0.5, 100]} />

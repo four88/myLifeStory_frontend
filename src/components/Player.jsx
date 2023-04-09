@@ -165,7 +165,12 @@ export default function Player() {
 
   return (
     <>
-      <OrbitControls ref={controlsRef} enableZoom={false} />
+      <OrbitControls
+        ref={controlsRef}
+        enableZoom={true}
+        minDistance={3}
+        maxDistance={8}
+      />
       <RigidBody
         ref={rigidRef}
         type="dynamic"

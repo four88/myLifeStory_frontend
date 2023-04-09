@@ -5,7 +5,17 @@ const isCodeSandbox =
     "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env;
 
 export default {
-    plugins: [react(), glsl()],
+    plugins: [
+        react(),
+        glsl({
+            include: /\.glsl$/,
+            exclude: /node_modules/,
+            transform: {
+                // Use raw loader to load GLSL files as text
+                loader: "raw",
+            },
+        }),
+    ],
     root: "src/",
     publicDir: "../public/",
     base: "./",

@@ -6,18 +6,27 @@ import userApi from "../api/UserApi";
 export default function Login() {
   const { setIsLogin, setUser } = useUserStore();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState(false);
 
   const history = useHistory();
 
   const handleLogin = (evt) => {
     evt.preventDefault();
     console.log(loginForm);
-    userApi.loginUser(loginForm.email, loginForm.password).then((res) => {
-      setIsLogin(true);
-      setUser(res);
-      history.push("/");
-      setLoginForm({ email: "", password: "" });
-    });
+    userApi
+      .loginUser(loginForm.email, loginForm.password)
+      .then((res) => {
+        setIsLogin(true);
+        setUser(res);
+        history.push("/");
+        setLoginForm({ email: "", password: "" });
+        setError(false);
+      })
+      .catch((err) => {
+        if (err === "Error: Unauthorized") {
+          setError(true);
+        }
+      });
   };
 
   return (
@@ -63,7 +72,13 @@ export default function Login() {
               }
             />
           </div>
-
+          {error ? (
+            <div className="text-sm bg-red-100 rounded-md text-red-500 py-1 flex justify-center mb-[-15px]">
+              Incorrect E-mail or password
+            </div>
+          ) : (
+            ""
+          )}
           <button
             type="submit"
             className="mt-4 bg-sky-400 rounded-md py-1 text-white hover:bg-sky-500"

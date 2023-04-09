@@ -84,7 +84,7 @@ function ChapterItem({ chapter, position }) {
               distance={8} // You can adjust the distance to control the light's reach
               intensity={6} // Adjust the intensity of the light
               decay={4} // Adjust the decay of the light
-              color="#F3D6B"
+              color="cyan"
             />
             <primitive
               object={chapterMesh.scene.clone()}

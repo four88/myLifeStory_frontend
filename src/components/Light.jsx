@@ -34,7 +34,7 @@ export default function Lights() {
         intensity={0.3}
         shadow-mapSize={[2048, 2048]}
         shadow-camera-near={0.2}
-        shadow-camera-far={20}
+        shadow-camera-far={150}
         shadow-camera-top={50}
         shadow-camera-right={10}
         shadow-camera-bottom={-10}
