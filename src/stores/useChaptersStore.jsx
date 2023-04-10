@@ -7,7 +7,7 @@ const useChaptersStore = create((set) => ({
   addChapter: (chapterObject) => {
     set((state) => {
       const chapterExists = state.chapters.find(
-        (chapter) => chapter.no === chapterObject.no
+        (chapter) => chapter._id === chapterObject._id
       );
 
       if (chapterExists) {
