@@ -7,7 +7,7 @@ const useHiddenItemStore = create((set) => ({
   addHiddenItem: (hiddenItemObject) => {
     set((state) => {
       const hiddenItemExists = state.hiddenItems.find(
-        (item) => item.no === hiddenItemObject.no
+        (item) => item._id === hiddenItemObject._id
       );
 
       if (hiddenItemExists) {
