@@ -69,9 +69,9 @@ class HiddenItemApi {
 }
 
 const hiddenItemApi = new HiddenItemApi({
-  // baseUrl: `http://104.196.253.173`,
-
-  baseUrl: `https://api.mylifestory.chickenkiller.com`,
+  baseUrl: `http://localhost:3000`,
+  // baseUrl: `https://api.mylifestory.chickenkiller.com`,
+  // baseUrl: `https://api-mylifestroy.onrender.com/`,
 });
 
 export default hiddenItemApi;

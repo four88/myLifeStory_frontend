@@ -17,6 +17,7 @@ export default function BagPopup() {
   const { item, status, setPreviewItem } = usePreviewStore();
   const { hiddenItems } = useHiddenItemStore();
 
+  console.log(item);
   // console.log(chapters);
 
   const selectForReview = (item, status) => {
