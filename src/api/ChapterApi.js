@@ -73,7 +73,7 @@ const chapterApi = new ChapterApi({
 
   // baseUrl: `https://api.mylifestory.chickenkiller.com`,
 
-  // baseUrl: `https://api-mylifestroy.onrender.com`,
+  baseUrl: `https://api-mylifestroy.onrender.com`,
 });
 
 export default chapterApi;

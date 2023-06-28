@@ -69,9 +69,9 @@ class PageApi {
 }
 
 const pageApi = new PageApi({
-  baseUrl: `http://localhost:3000`,
+  // baseUrl: `http://localhost:3000`,
 
-  // baseUrl: `https://api-mylifestroy.onrender.com`,
+  baseUrl: `https://api-mylifestroy.onrender.com`,
   // baseUrl: `https://api.mylifestory.chickenkiller.com`,
 });
 

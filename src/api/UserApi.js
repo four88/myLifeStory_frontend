@@ -23,10 +23,10 @@ class UserApi {
 }
 
 const userApi = new UserApi({
-  baseUrl: `http://localhost:3000`,
+  // baseUrl: `http://localhost:3000`,
   // baseUrl: `https://api.mylifestory.chickenkiller.com`,
 
-  // baseUrl: `https://api-mylifestroy.onrender.com`,
+  baseUrl: `https://api-mylifestroy.onrender.com`,
 });
 
 export default userApi;
